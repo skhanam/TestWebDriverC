@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5CD33F8B-496C-4855-93D6-B917A8C6011B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestWebDriver</RootNamespace>
+    <AssemblyName>TestWebDriver</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SlowCheetahTargets Condition=" '$(SlowCheetahTargets)'=='' ">$(LOCALAPPDATA)\Microsoft\MSBuild\SlowCheetah\v1\SlowCheetah.Transforms.targets</SlowCheetahTargets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.0.0.4001\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NAnt.Core, Version=0.91.4145.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SharedAssemblies\Nant\NAnt.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NAnt.NUnit, Version=0.91.4145.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SharedAssemblies\Nant\NAnt.NUnit.dll</HintPath>
+    </Reference>
+    <Reference Include="NAnt.NUnit2ReportTasks, Version=0.1.2.2, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SharedAssemblies\Nant\NAnt.NUnit2ReportTasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.XML" />
+    <Reference Include="WebDriver, Version=2.25.1.0, Culture=neutral, PublicKeyToken=1c2bd1631853048f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Selenium.WebDriver.2.25.1\lib\net40\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=2.25.1.0, Culture=neutral, PublicKeyToken=1c2bd1631853048f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Selenium.Support.2.25.1\lib\net40\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="com\cf\webdriver\src\Common\LoggingWebDriverEventListener.cs" />
+    <Compile Include="com\cf\webdriver\src\Common\WebDriverJSExceptionMonitor.cs" />
+    <Compile Include="com\cf\webdriver\src\Common\Dateex.cs" />
+    <Compile Include="com\cf\webdriver\src\Common\DriverContext.cs" />
+    <Compile Include="com\cf\webdriver\src\Common\Environment.cs" />
+    <Compile Include="com\cf\webdriver\src\Common\Utility.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\AirportGuideModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\BaseModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\BeInspiredModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\DestinationSpiltModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\FooterModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\HolidaysModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\NewsLetterModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\TravelGuideModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\GooglePPCModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\TravelKnowHowModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\SocialMediaModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\FlightDealsModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\HomeModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\SearchByDateModule.cs" />
+    <Compile Include="com\cf\webdriver\src\ModuleObject\StaffPicksModule.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\BeInspiredPage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\AirportGuidePage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\DepartureSpiltPage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\DestinationSpiltPage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\FooterPage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\HolidaysPage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\NewsLetterPage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\TravelGuidePage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\GooglePPCPage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\TravelKnowHowPage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\StaffPicksPage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\SocialMediaWidgetPage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\FlightdealsPage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\HomePage.cs" />
+    <Compile Include="com\cf\webdriver\src\PageObject\SearchByDatePage.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionAusTests\AusFlightdealsTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionAusTests\AusHomeTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionAusTests\AusHotdealsTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionAusTests\NewsLetterTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionAusTests\SearchByDateTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionAusTests\TravelguideTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUSTests\USTravellOlTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUSTests\USBeInspiredTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUSTests\USBookingEngineSearchTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUSTests\USFlightdealsTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUSTests\USHomeTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUSTests\USNewsLetterTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUSTests\USSanityTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\AirportGuideTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\AndroidWebHomeTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\BeInspiredTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\DepartureSpiltTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\DestinationSpiltTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\FlightDealsTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\FooterTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\HolidayTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\HomeTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\BookingEngineSearchTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\NewsLetterTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\PpcLandingTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\SearchByDateTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\StaffPicksTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\TravelGuideTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\TravelKnowHowTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\SanityTest.cs" />
+    <Compile Include="com\cf\webdriver\src\RegressionUKTests\WidgetTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.Debug.config">
+      <DependentUpon>app.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="app.Release.config">
+      <DependentUpon>app.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="packages.config" />
+    <None Include="test.build">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="com\cf\webdriver\src\RegressionCATests\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

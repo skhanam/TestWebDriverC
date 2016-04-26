@@ -1,0 +1,136 @@
+<?xml version="1.0" ?>
+<project name="NUnitReport" default="nunitreport" basedir=".">
+  <property name="emailfrom" value="shabana.khanam@cheapflights.com"/>
+  <property name="emailserver" value="WS-SMTP.euprod.cheapflights.net"/>
+  <property name="category" value="" overwrite="false"/>
+
+  <target name="nunitreport">
+
+    <echo message="Customizing TestWebDriver.dll.config."/>
+    <if test="${property::exists('screenShotDirectory')}">
+      <xmlpoke file="TestWebDriver.dll.config" xpath="/configuration/appSettings/add[@key='ScreenShotDirectory']/@value" value="${screenShotDirectory}" />
+    </if>
+    <xmlpoke file="TestWebDriver.dll.config" xpath="/configuration/log4net/appender[@name='LogFileAppenender']/param[@name='File']/@value" value="${logFilePath}" />
+
+    <echo message="Creating results directory."/>
+    <!-- Mandatory-->
+    <mkdir dir="${resultsDirectory}" />
+
+    <if test="${category == ''}">
+      <echo message="Running all tests."/>
+      <property name="emailSubject" value="Selenium Test Report - All Tests: ${badTestCount} errors/failures" dynamic="true"/>
+      <nunit2 verbose="true" haltonfailure="false" failonerror="false">
+        <formatter type="Xml" usefile="true" extension=".xml" outputdir="${resultsDirectory}" />
+        <test>
+          <assemblies>
+            <include name="TestWebDriver.dll" />
+          </assemblies>
+        </test>
+      </nunit2>
+    </if>
+    <if test="${category != ''}">
+      <echo message="Running tests in the ${category} category."/>
+      <property name="emailSubject" value="Selenium Test Report - ${category}: ${badTestCount} errors/failures" dynamic="true"/>
+      <nunit2 verbose="true" haltonfailure="false" failonerror="false">
+        <formatter type="Xml" usefile="true" extension=".xml" outputdir="${resultsDirectory}" />
+        <test>
+          <assemblies>
+            <include name="TestWebDriver.dll" />
+          </assemblies>
+          <categories>
+            <include name="${category}" />
+          </categories>
+        </test>
+      </nunit2>
+    </if>
+
+    <!--Count failed tests-->
+    <xmlpeek file="${resultsDirectory}\TestWebDriver.dll-results.xml" xpath="/test-results/@errors" property="testErrorCount"/>
+    <xmlpeek file="${resultsDirectory}\TestWebDriver.dll-results.xml" xpath="/test-results/@failures" property="testFailureCount"/>
+    <property name="badTestCount" value="${int::parse(testErrorCount) + int::parse(testFailureCount) }" />
+    <echo message="Found ${badTestCount} errors and/or failures in NUnit results."/>
+
+    <echo message="Generating NUnit HTML report."/>
+    <!-- By default the report is in english, format is noframes by default -->
+    <nunit2report out="TestResults.html" todir="${resultsDirectory}" >
+      <fileset>
+        <include name="${resultsDirectory}\*.xml" />
+      </fileset>
+    </nunit2report>
+
+    <echo message="Sending notification emails..."/>
+    <mail
+        from="${emailfrom}"
+        tolist="shabana.khanam@cheapflights.com"
+        cclist="ian.morgan@cheapflights.com"
+        subject="${emailSubject}"
+        mailhost="${emailserver}">
+      <attachments>
+        <include name="${resultsDirectory}\TestResults.html" />
+      </attachments>
+    </mail>
+
+    <echo message="Finished."/>
+
+  </target>
+
+</project>
+
+
+
+
+
+
+<!--   <project name="TestSelenium" default="build" >
+                <property name="solution.file.name" value="AutomationSeleniumFramework.sln"/>
+                <property name="project.config" value="debug"/>
+                <property name="solution.dir" value="."/>
+                <property name="build.output.dir" value="${solution.dir}/AutomationBuildOutput"/>
+                <property name="tests.output.dir" value="${build.output.dir}/SanityTestsOutput"/>
+        
+                <target name="build" depends="compile.source"/>
+  
+              <target name="clean.source">
+                <exec program="${framework::get-framework-directory(framework::get-target-framework())}\msbuild.exe"
+                      commandline="${solution.file.name} /t:Clean /p:Configuration*${project.config} /v:q" workingdir="." />
+                <echo message="Clean Finished"/>
+          
+                </target>
+        
+    
+              <target name="compile.source" depends="clean.source">
+                <exec program="${framework::get-framework-directory(framework::get-target-framework())}\msbuild.exe"
+                      commandline="${solution.file.name} /t:Clean /p:Configuration*${project.config} /v:q" workingdir="." />
+                <echo message="Compile Finished"/>
+              </target>
+
+              <target name="setup.build.process" description="Initialiazes build properties">
+                <delete dir="${build.output.dir}" failonerror="false"/>
+                <mkdir dir="${build.output.dir}"/>
+                <mkdir dir="${tests.output.dir}"/>
+                <echo message="Current Directory: ${project::get-base-directory()}"/>
+              </target>
+
+
+              <target name="move.assemblies.for.tests"  depends="compile.source">
+                <property name="TestSelenium.com.cf.webdriver.src" value="/TestProject1/bin/Debug"/>
+                <echo message="Moving contents of ${TestSelenium.com.cf.webdriver.src} to ${assemblies.output.dir}"/>
+                <copy todir="${assemblies.output.dir}" flatten="true">
+                 <fileset basedir="${solution.dir}${TestSelenium.com.cf.webdriver.src}">
+                   <include name="*.dll"/>
+                   </fileset>  
+                 </copy> 
+              </target>
+          
+          
+          <target name="tests.run.SanityTests" depends="compile.source, move.assemblies.for.tests">
+            <echo message="Starting to run tests"/>
+            <nunit2 haltonfailure="false" failonerror="false" verbose="true">
+               <formatter type="Xml" extenstion=".xml" outputdir="${tests.output.dir}" usefile="true"/>
+              <test assemblyname="${assemblies.output.dir}/TestSelenium.dll"/>
+              
+            </nunit2>
+          </target>
+    
+  
+ </project> -->

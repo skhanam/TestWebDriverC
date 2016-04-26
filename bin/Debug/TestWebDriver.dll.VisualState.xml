@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
+  <TopNode>[0-1378]c:\tfs\TestAndRelease\FunctionalAutomation\TestWebDriver\bin\Debug\TestWebDriver.dll</TopNode>
+  <SelectedNode>[0-1350]TestWebDriver.com.cf.webdriver.src.RegressionUSTests.BeInspiredTest</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1378]c:\tfs\TestAndRelease\FunctionalAutomation\TestWebDriver\bin\Debug\TestWebDriver.dll" Expanded="true" />
+    <Node UniqueName="[0-1379]TestWebDriver" Expanded="true" />
+    <Node UniqueName="[0-1380]TestWebDriver.com" Expanded="true" />
+    <Node UniqueName="[0-1381]TestWebDriver.com.cf" Expanded="true" />
+    <Node UniqueName="[0-1382]TestWebDriver.com.cf.webdriver" Expanded="true" />
+    <Node UniqueName="[0-1383]TestWebDriver.com.cf.webdriver.src" Expanded="true" />
+    <Node UniqueName="[0-1386]TestWebDriver.com.cf.webdriver.src.RegressionAusTests" Expanded="true" />
+    <Node UniqueName="[0-1384]TestWebDriver.com.cf.webdriver.src.RegressionUKTests" Expanded="true" />
+    <Node UniqueName="[0-1385]TestWebDriver.com.cf.webdriver.src.RegressionUSTests" Expanded="true" />
+    <Node UniqueName="[0-1387]TestWebDriver.com.cf.webdriver.src.SanityTests" Expanded="true" />
+  </Nodes>
+</VisualState>
